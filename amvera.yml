@@ -1,0 +1,23 @@
+# Конфигурация для деплоя на Amvera (https://amvera.ru).
+# Amvera читает этот файл и сам разворачивает приложение.
+#
+# ВАЖНО про данные: файл БД data/bot.db должен лежать на ПОСТОЯННОМ хранилище,
+# иначе при пересборке/перезапуске данные потеряются. На Amvera постоянные данные
+# принято хранить в каталоге /data. Поэтому в переменных окружения панели Amvera
+# задайте DB_PATH=/data/bot.db и BACKUP_DIR=/data/backups (см. README).
+
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: "3.11"
+
+build:
+  # Установка зависимостей
+  requirementsPath: requirements.txt
+
+run:
+  # Команда запуска бота (long polling)
+  command: python bot.py
+  # Persistent storage монтируется в /data — туда складываем БД и бэкапы.
+  persistenceMount: /data
