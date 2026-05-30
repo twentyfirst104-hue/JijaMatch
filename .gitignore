@@ -1,0 +1,18 @@
+# Окружение и секреты
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# База данных и бэкапы (НЕ коммитим пользовательские данные)
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+backups/
+
+# Системное
+.DS_Store
+.idea/
+.vscode/
